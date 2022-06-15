@@ -18,6 +18,12 @@ public class BallController : MonoBehaviour
 
     public void ResetBall()
     {
+        rig.velocity = speed;
         transform.position = new Vector3(resetPosition.x, resetPosition.y, 2);
+    }
+
+    public void ActivePUSPeedUp(float magnitude)
+    {
+        rig.velocity *= magnitude;
     }
 }
