@@ -50,13 +50,14 @@ public class PaddleController : MonoBehaviour
         rig.velocity = movement;
     }
 
+    #region Longer Length
     public void ActivePULongerLength(float lengthTimes)
     {
         if (!longerPaddleActive)
         {
-            longerPaddleActive = true;
             spriteRenderer.color = Color.red;
             transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y * lengthTimes);
+            longerPaddleActive = true;
             StartCoroutine("DeactivePULongerLength", lengthTimes);
         }
     }
@@ -66,16 +67,26 @@ public class PaddleController : MonoBehaviour
         yield return new WaitForSeconds(powerUpActiveTime);
         transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y / lengthTimes);
         longerPaddleActive = false;
-        spriteRenderer.color = Color.white;
-    }
 
+        if (speedUpActive)
+        {
+            spriteRenderer.color = Color.green;
+        }
+        else
+        {
+            spriteRenderer.color = Color.white;
+        }
+    }
+    #endregion
+
+    #region Speed Up
     public void ActivePUSpeedUp(float speedTimes)
     {
         if (!speedUpActive)
         {
-            speedUpActive = true;
             spriteRenderer.color = Color.green;
             speed *= (int)speedTimes;
+            speedUpActive = true;
             StartCoroutine("DeactivePUSpeedUp", speedTimes);
         }
         
@@ -86,6 +97,15 @@ public class PaddleController : MonoBehaviour
         yield return new WaitForSeconds(powerUpActiveTime);
         speedUpActive = false;
         speed /= (int)speedTimes;
-        spriteRenderer.color = Color.white;
+
+        if (longerPaddleActive)
+        {
+            spriteRenderer.color = Color.red;
+        }
+        else
+        {
+            spriteRenderer.color = Color.white;
+        }
     }
+    #endregion
 }

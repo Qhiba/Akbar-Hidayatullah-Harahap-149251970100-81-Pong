@@ -773,7 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightScore: 0
   leftScore: 0
-  maxScore: 1000
+  maxScore: 5
   ball: {fileID: 1320786266}
 --- !u!4 &674726934
 Transform:
