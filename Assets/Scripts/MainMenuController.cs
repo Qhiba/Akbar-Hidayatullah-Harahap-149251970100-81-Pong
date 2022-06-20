@@ -14,4 +14,14 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.Log("Created by Akbar H. Harahap - 149251970100-81");
     }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

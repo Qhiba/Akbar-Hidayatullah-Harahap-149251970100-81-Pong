@@ -66,7 +66,6 @@ public class PowerUpManager : MonoBehaviour
     public void RemovePowerUp(GameObject powerUp)
     {
         powerUpList.Remove(powerUp);
-        Debug.Log(powerUp.name + "Destroyed");
         Destroy(powerUp);
     }
 
